@@ -1,0 +1,8 @@
+/* Shared dimensions for the next-project band on every portfolio page. */
+.next-project-footer,.hashomer-next-footer{width:1440px;height:205px;min-height:205px;padding:0;display:block;background:#030a16;color:#fff}
+.next-project-footer .next-eyebrow,.hashomer-next-footer .next-eyebrow{position:absolute;left:40px;top:28px;right:auto;bottom:auto;transform:none;margin:0;color:#0071FC;font:400 18px/1.22 Helvetica,Arial,sans-serif}
+.next-project-footer h2,.hashomer-next-footer h2{position:absolute;left:40px;top:73.2px;right:auto;bottom:auto;transform:none;margin:0;color:#fff;font:700 30px/1.22 Helvetica,Arial,sans-serif}
+.next-project-footer .next-discipline,.hashomer-next-footer .next-discipline{position:absolute;left:40px;top:127px;right:auto;bottom:auto;transform:none;margin:0;color:#fff;font:400 18px/1.22 Helvetica,Arial,sans-serif}
+.next-project-button,.hashomer-next-button{position:absolute;left:1132px;top:68px;right:auto;bottom:auto;width:177px;height:46px;min-width:177px;margin:0;padding:0;display:flex;align-items:center;justify-content:center;gap:12px;border:.5px solid #030a16;border-radius:999px;background:#fff;color:#030a16;font:400 18px/1.22 Helvetica,Arial,sans-serif;text-decoration:none;white-space:nowrap}
+.next-project-button svg,.hashomer-next-button svg,.next-project-button img{width:24px;height:24px;flex:none}
+.next-project-button:hover,.hashomer-next-button:hover,.next-project-button:focus-visible,.hashomer-next-button:focus-visible{background:#FFC4EC;color:#030a16}

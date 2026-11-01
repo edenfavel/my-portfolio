@@ -1,0 +1,9 @@
+/* Portfolio action colors, shared across all case-study pages. */
+.explore-full,.urban-open-full{background:#030A16!important;color:#FFC4EC!important}
+.explore-full img{filter:brightness(0) saturate(100%) invert(83%) sepia(19%) saturate(974%) hue-rotate(285deg) brightness(105%) contrast(101%)}
+.explore-full:hover,.explore-full:focus-visible,.urban-open-full:hover,.urban-open-full:focus-visible{background:#fff!important;color:#030A16!important}
+.explore-full:hover img,.explore-full:focus-visible img{filter:brightness(0)}
+.next-project-button,.hashomer-next-button{background:#fff!important;color:#030A16!important}
+.next-project-button:hover,.next-project-button:focus-visible,.hashomer-next-button:hover,.hashomer-next-button:focus-visible{background:#FFC4EC!important;color:#030A16!important}
+.back:hover,.back:focus-visible,.back-portfolio:hover,.back-portfolio:focus-visible,.nav:hover,.nav:focus-visible{background:#030A16!important;color:#FFC4EC!important}
+.back:hover img,.back:focus-visible img,.back-portfolio:hover img,.back-portfolio:focus-visible img,.nav:hover img,.nav:focus-visible img{filter:brightness(0) saturate(100%) invert(83%) sepia(19%) saturate(974%) hue-rotate(285deg) brightness(105%) contrast(101%)!important}

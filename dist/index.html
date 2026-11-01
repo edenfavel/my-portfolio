@@ -1,0 +1,89 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Eden Favel — Graphic Designer</title><meta name="description" content="Eden Favel’s graphic design portfolio."><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fffeed'/%3E%3Ctext x='5' y='24' font-family='sans-serif' font-size='23' font-weight='bold' fill='%23003ed4'%3EE%3C/text%3E%3C/svg%3E"><style>*{box-sizing:border-box}html,body{margin:0;background:#030A16} .page{position:relative;width:100%;max-width:1440px;aspect-ratio:1440/1024;margin:0 auto;overflow:hidden}.lettering{position:absolute;height:auto}.project{position:absolute;left:49.0972222222%;width:41.8055555556%;height:35.83984375%;overflow:hidden}.project img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.first{top:1.85546875%;border:0;padding:0;background:transparent;cursor:pointer}.project .color{opacity:0;mask-size:100% 100%;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat}.project.revealing .color{opacity:1}.project:focus-visible .color,.project.touch-preview .color{opacity:1;mask-image:none!important;-webkit-mask-image:none!important}.project:focus-visible{outline:none}.second{top:39.6484375%;border:0;padding:0;background:transparent;cursor:pointer}.third{top:77.44140625%;border:0;padding:0;background:transparent;cursor:pointer}@media(prefers-reduced-motion:reduce){.project .color{transition:none}}
+.title-motion{position:absolute;pointer-events:none;opacity:0;z-index:2}.motion-active{cursor:none}.motion-cursor{position:fixed;left:0;top:0;width:0;height:0;pointer-events:none;opacity:0;z-index:100;transition:opacity .18s}.motion-cursor.visible{opacity:1}.cursor-cloud{position:absolute;width:50px;height:50px;left:-25px;top:-25px;border-radius:50%;background:rgba(0,62,212,.065);border:1px solid rgba(0,62,212,.075);transform:scaleX(var(--stretch,1))}.motion-cursor i{position:absolute;left:-1px;top:-1px;width:2px;height:2px;border-radius:50%;background:rgba(0,62,212,.4);transform:rotate(calc(var(--i)*51.428deg + var(--phase,0deg))) translateX(calc(8px + var(--i)*1px))}@media(prefers-reduced-motion:reduce){.title-motion,.motion-cursor{display:none}}
+.fluid-trail{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:100}@media(prefers-reduced-motion:reduce){.fluid-trail{display:none}}
+/* Cool monochrome treatment inspired by Eden’s supplied reference video. */
+.project img:not(.color){filter:grayscale(1)}
+.project .reveal-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.project:focus-visible .reveal-canvas,.project.touch-preview .reveal-canvas{opacity:0}.project.revealing .color{opacity:0}
+html,body{width:100%;height:100%;overflow:hidden}.page{width:100%;max-width:none;height:100dvh;aspect-ratio:auto;margin:0}.projects-scroll{position:absolute;left:49.0972222222%;top:0;width:41.8055555556%;height:100%;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:1.3194444444vw 0;display:flex;flex-direction:column;gap:1.3888888889vw}.projects-scroll::-webkit-scrollbar{display:none}.projects-scroll .project{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:602/367;flex:none}.project.third img{filter:none}.lettering[src="assets/signature.png"]{top:auto!important;bottom:15px}.lettering[src="assets/name.png"]{top:2.5694444444vw!important}.lettering[src="assets/title-portfolio.svg"]{top:9.0972222222vw!important}.lettering[src="assets/about.png"]{top:28.8194444444vw!important}.lettering[src="assets/projects.png"]{top:31.7361111111vw!important}.lettering[src="assets/contact.png"]{top:34.6527777778vw!important}
+.projects-scroll .third{aspect-ratio:1262/834}
+/* Desktop composition from Eden's October 10 reference. */
+.projects-scroll{left:49.3%;width:38.6%;padding:3.95vh 0 2.5vh;gap:1.35vw}
+.projects-scroll .first{aspect-ratio:481/295}
+.projects-scroll .second,.projects-scroll .third{aspect-ratio:481/320}
+.lettering[src="assets/about.png"]{top:35vh!important}
+.lettering[src="assets/projects.png"]{display:none}
+.lettering[src="assets/contact.png"]{top:38.1vh!important}
+.lettering[src="assets/signature.png"]{bottom:15vh}
+.project-index{position:absolute;left:91.15%;top:35vh;display:flex;flex-direction:column;gap:.75vw;color:#0071FC;font-family:Atlas,sans-serif;font-weight:500;font-size:1.3vw;line-height:1.3}
+.project-index span{transition:color .15s}
+.project-index span.active{color:#c5c3c3}
+@font-face{font-family:Atlas;src:url('assets/atlas-medium.otf') format('opentype');font-weight:500;font-display:swap}.project.third img:not(.color){filter:grayscale(1)}
+.project.first img:not(.color){filter:grayscale(1) url(#tone-first)}
+.project.second img:not(.color){filter:grayscale(1) url(#tone-second)}
+.project.third img:not(.color){filter:grayscale(1) url(#tone-third)}
+.lettering[src="assets/about.png"]{top:28.8194444444vw!important}.lettering[src="assets/contact.png"]{top:31.4vw!important}.project-index{top:28.8194444444vw}
+
+.lettering:not([src]),.project-index{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;color:#0071FC;line-height:1.25}
+.name-text{left:2.93%;top:2.55vw;font-size:1.55vw}
+.about-text{left:2.78%;top:28.9vw;font-size:1.3vw}
+.contact-text{left:2.78%;top:31.5vw;font-size:1.3vw}
+.signature-text{left:2.78%;bottom:8px;font-size:1.3vw;white-space:nowrap}
+.project-index{left:90.85%;top:28.9vw;font-size:1.3vw;gap:.72vw}
+.lettering[src="assets/title-portfolio.svg"],.title-motion{filter:url(#title-blue)}
+.projects-scroll{left:49.2%;width:38.5%;padding-top:3.45vw}
+.project:focus-visible .project-title,.project:focus-visible .project-discipline{color:#0071FC}
+
+/* Exact project proportions requested by Eden: width 554, height 367. */
+.projects-scroll{padding-top:3.15vw;gap:1.35vw}
+.projects-scroll .project{height:auto;aspect-ratio:554/367}
+
+/* Two complete cards and half of the third, preserving 554:367. */
+@media(min-aspect-ratio:1/1){
+.projects-scroll{width:calc((100dvh - 5.85vw) * 0.6038147139);padding-top:3.15vw;gap:1.35vw}
+}
+
+/* Anchor the photo column to the project labels, matching the reference gap. */
+.projects-scroll{left:auto;right:12.35%}
+
+.lettering[src="assets/title-portfolio.svg"],.title-motion{filter:none}
+.intro{position:absolute;left:2.65%;top:15.5vw;margin:0;width:34%;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:1.3vw;line-height:1.18;font-weight:400;color:#0071FC}
+
+.scroll-cue{position:absolute;right:12.35%;top:max(8px,calc(3.15vw - 28px));width:38.5%;display:flex;justify-content:center;align-items:baseline;gap:7px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px;line-height:1;color:#0071FC;pointer-events:none}
+.scroll-cue-dot{display:block;flex:none;width:7px;height:7px;border-radius:50%;background:currentColor;animation:scroll-dot-rise 1.65s ease-in-out infinite;will-change:transform}
+@keyframes scroll-dot-rise{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(min-aspect-ratio:1/1){.scroll-cue{width:calc((100dvh - 5.85vw) * 0.6038147139)}}
+@media(prefers-reduced-motion:reduce){.scroll-cue-dot{animation:none}}
+.name-text{font-size:18px}.lettering[src="assets/title-portfolio.svg"],.title-motion{filter:url(#portfolio-night)}
+.title-white-reveal,.text-white-reveal{position:fixed;pointer-events:none;z-index:101;filter:none}
+.projects-scroll .project img{transform:translateY(var(--photo-pan,0px)) scale(var(--photo-zoom,1));transform-origin:center;will-change:transform}
+@media(prefers-reduced-motion:reduce){.projects-scroll .project img{transform:none;will-change:auto}}
+.projects-scroll .project{transform-origin:center}
+@media(prefers-reduced-motion:reduce){.projects-scroll .project{transform:none!important;will-change:auto}}
+
+.project.fourth{border:0;padding:0;background:transparent;cursor:pointer}.project.fourth img:not(.color){filter:grayscale(1) url(#tone-third)}
+
+.project-index span.active{color:#fff}
+
+.projects-scroll .project img:not(.color){filter:none!important}
+
+ .projects-scroll .second img,.projects-scroll .fourth img{object-fit:contain;background:#030a16}
+/* Project covers: focused artwork with directly attached captions. */
+.projects-scroll .project{aspect-ratio:554/419;text-align:left}
+.projects-scroll .project img{height:calc(100% - 52px)}
+.project-caption{position:absolute;bottom:0;left:0;width:100%;height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#030a16;color:#f0f3f7;z-index:2;font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.25}
+.project-title{font-weight:500}.project-number{font-size:inherit;font-weight:700}.project-discipline{font-size:12px;color:#aab5c6;font-weight:400}
+.project-index{display:none}
+@media(max-width:700px){.project-caption{font-size:11px;gap:5px}.project-discipline{font-size:9px}}
+@media(hover:hover){.project:hover .project-title,.project:hover .project-discipline{color:#0071FC}}
+
+.project-arrow-cursor{position:fixed;width:42px;height:42px;border-radius:50%;background:#FFC4EC;color:#030A16;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:110;transform:translate(-50%,-50%);opacity:0}
+.project-arrow-cursor.visible{opacity:1}.project-arrow-cursor svg{width:21px;height:21px}
+.project.has-project-cursor,.project.has-project-cursor *{cursor:none}
+.about-text{text-decoration:none;color:inherit}.about-text:hover{color:#FFC4EC}.about-text:focus-visible{outline:2px solid #FFC4EC;outline-offset:5px}.projects-scroll,.project,.project:focus,.project:focus-visible,.project:hover{outline:none!important;box-shadow:none}.projects-scroll:focus{outline:none!important}.contact-text{text-decoration:none;color:inherit}.contact-text:hover{color:#FFC4EC}.contact-text:focus-visible{outline:2px solid #FFC4EC;outline-offset:5px}@media(hover:hover){.lettering[src="assets/title-portfolio.svg"]:hover,.title-motion.is-pink{filter:url(#portfolio-night) url(#title-pink)}}.project.fourth .project-title,.project.fourth .project-discipline{color:#fff}.project.fourth:hover .project-title,.project.fourth:hover .project-discipline,.project.fourth:focus-visible .project-title,.project.fourth:focus-visible .project-discipline{color:#0071FC}</style></head><body><svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><filter id="tone-first" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="gamma" amplitude="1" exponent="0.70464" offset="0"/><feFuncG type="gamma" amplitude="1" exponent="0.70464" offset="0"/><feFuncB type="gamma" amplitude="1" exponent="0.70464" offset="0"/></feComponentTransfer></filter><filter id="tone-second" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="gamma" amplitude="1" exponent="0.54022" offset="0"/><feFuncG type="gamma" amplitude="1" exponent="0.54022" offset="0"/><feFuncB type="gamma" amplitude="1" exponent="0.54022" offset="0"/></feComponentTransfer></filter><filter id="tone-third" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncR type="gamma" amplitude="1" exponent="0.75290" offset="0"/><feFuncG type="gamma" amplitude="1" exponent="0.75290" offset="0"/><feFuncB type="gamma" amplitude="1" exponent="0.75290" offset="0"/></feComponentTransfer></filter><filter id="title-blue" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.666667 0 0 0 0.333333 0.615686 0 0 0 0.380392 -0.023529 0 0 0 0.952941 0 0 0 1 0"/></filter><filter id="portfolio-night" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.017857143 0 0 0 -0.006092437 -0.613095238 0 0 0 0.652310924 -1.369047619 0 0 0 1.455322129 0 0 0 1 0"/></filter><filter id="title-pink" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 1.095652174 0 -0.082779199 0 0 0.808695652 0 -0.030554135 0 0 0.930434783 0 0.006001705 0 0 0 1 0"/></filter></defs></svg><main class="page" aria-label="Eden Favel graphic design portfolio">
+<span class="lettering name-text">Eden Favel</span>
+<img class="lettering" src="assets/title-portfolio.svg" alt="Portfolio" style="left:2.9166666666666665%;top:12.79296875%;width:33.1005586592%">
+<p class="intro">Graphic Design focused on branding, visual identity, and<br>digital design.</p><a class="lettering about-text" href="about.html?v=latest-portrait-dot-20261031">About me</a>
+
+<a class="lettering contact-text" href="about.html?v=latest-portrait-dot-20261031#contact">Contact</a>
+
+<section class="projects-scroll" aria-label="Portfolio projects" tabindex="0"><button class="project first" type="button" aria-label="Hamarcolet — open branding project"><img src="assets/home-hamarcolet-bag.png" alt="המרכולת — ליד הבית"><img class="color" src="assets/home-hamarcolet-bag.png" alt="" aria-hidden="true"><span class="project-caption"><span class="project-title"><span class="project-number">01.</span> Hamarcolet</span><span class="project-discipline">Brand identity</span></span></button><button class="project second" id="vin" type="button" aria-label="HaShomer HaChadash — open website redesign project"><img src="assets/home-hashomer-clean-reference.png" alt="HaShomer HaChadash website redesign"><img class="color" src="assets/home-hashomer-clean-reference.png" alt="" aria-hidden="true"><span class="project-caption"><span class="project-title"><span class="project-number">02.</span> HaShomer HaChadash</span><span class="project-discipline">Website redesign</span></span></button><button class="project third" type="button" aria-label="CarUp — open app project"><img src="assets/home-carup-focused.png" alt="CarUp project"><img class="color" src="assets/home-carup-focused.png" alt="" aria-hidden="true"><span class="project-caption"><span class="project-title"><span class="project-number">03.</span> CarUp</span><span class="project-discipline">App design</span></span></button><button class="project fourth" id="urban-oasis" type="button" aria-label="Urban Oasis — open dashboard project"><img src="assets/home-urban-supplied-full.png" alt="Urban Oasis dashboard"><img class="color" src="assets/home-urban-supplied-full.png" alt="" aria-hidden="true"><span class="project-caption"><span class="project-title"><span class="project-number">04.</span> Urban Oasis</span><span class="project-discipline">Dashboard design</span></span></button></section><nav class="project-index" aria-label="Project names"><span data-project="first">Hamarcolet</span><span data-project="second">Web</span><span data-project="third">CarUp</span><span data-project="fourth">Urban Oasis</span></nav></main><script src="home-projects-loop.js?v=pagewide-glide-20261019"></script><script src="project-hover.js?v=support-centered-20261031"></script><script src="ribbon-shape.js"></script><script src="project-cursor.js?v=arrow-trial-20261024"></script><script src="title-motion.js?v=pink-hover-20261026"></script><script src="scroll-motion.js?v=full-project-covers-20261019"></script><script src="title-color-reveal.js?v=all-text"></script></body></html>
