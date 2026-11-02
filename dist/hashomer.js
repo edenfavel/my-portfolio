@@ -27,6 +27,7 @@
   const screen=document.querySelector('.live-screen');
   const viewport=document.querySelector('.live-viewport');
   const iframe=viewport.querySelector('iframe');
+  iframe.addEventListener('load', settleEntry);
   function fit(){
     root.style.setProperty('--page-scale',root.clientWidth/1440);
     const scale=screen.clientWidth/1440;
