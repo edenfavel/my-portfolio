@@ -29,14 +29,17 @@ counterObserver.observe(counterPanel);
 addEventListener('scroll',()=>{if(counterStarted||document.getElementById('home').hidden||scrollY<1)return;hasScrolled=true;counterObserver.unobserve(counterPanel);counterObserver.observe(counterPanel)},{passive:true});
 document.querySelectorAll('.farmers').forEach(menu=>{const button=menu.querySelector('.farmers-trigger');button.addEventListener('click',()=>{const open=menu.classList.toggle('open');button.setAttribute('aria-expanded',String(open))});menu.addEventListener('mouseenter',()=>button.setAttribute('aria-expanded','true'));menu.addEventListener('mouseleave',()=>{if(!menu.classList.contains('open'))button.setAttribute('aria-expanded','false')});menu.addEventListener('keydown',event=>{if(event.key==='Escape'){menu.classList.remove('open');button.blur();button.setAttribute('aria-expanded','false')}})});document.querySelectorAll('.young').forEach(menu=>{const button=menu.querySelector('.young-trigger');button.addEventListener('click',()=>{const open=menu.classList.toggle('open');button.setAttribute('aria-expanded',String(open))});menu.addEventListener('mouseenter',()=>button.setAttribute('aria-expanded','true'));menu.addEventListener('mouseleave',()=>{if(!menu.classList.contains('open'))button.setAttribute('aria-expanded','false')});menu.addEventListener('keydown',event=>{if(event.key==='Escape'){menu.classList.remove('open');button.blur();button.setAttribute('aria-expanded','false')}})});document.querySelectorAll('.join').forEach(menu=>{const button=menu.querySelector('.join-trigger');button.addEventListener('click',()=>{const open=menu.classList.toggle('open');button.setAttribute('aria-expanded',String(open))});menu.addEventListener('mouseenter',()=>button.setAttribute('aria-expanded','true'));menu.addEventListener('mouseleave',()=>{if(!menu.classList.contains('open'))button.setAttribute('aria-expanded','false')});menu.addEventListener('keydown',event=>{if(event.key==='Escape'){menu.classList.remove('open');button.blur();button.setAttribute('aria-expanded','false')}})});document.querySelector('.apply-scroll').addEventListener('click',event=>{event.preventDefault();window.scrollTo({top:document.getElementById('volunteer-coordinator').offsetTop+1760,behavior:'smooth'})});</script><script>
 (function(){
+ let lastViewportWidth=0;
  function fitHomeViewport(){
-  document.documentElement.style.setProperty('--site-scale',document.documentElement.clientWidth/1440);
+  lastViewportWidth=document.documentElement.clientWidth;
+  document.documentElement.style.setProperty('--site-scale',lastViewportWidth/1440);
   const home=document.getElementById('home');
   document.body.classList.toggle('home-viewport-fit',!home.hidden);
   // The original hero spans 940 design pixels before the next section begins.
   // Uniform scaling preserves every font, illustration and click target.
   home.style.removeProperty('--home-fit');
  }
- addEventListener('resize',fitHomeViewport);addEventListener('hashchange',fitHomeViewport);fitHomeViewport();
+ addEventListener('resize',fitHomeViewport);addEventListener('load',fitHomeViewport);addEventListener('hashchange',fitHomeViewport);fitHomeViewport();
+ if(window.ResizeObserver)new ResizeObserver(()=>{if(document.documentElement.clientWidth!==lastViewportWidth)fitHomeViewport();}).observe(document.documentElement);
 })();
 </script></body></html>
