@@ -111,9 +111,16 @@
     if(max){clip.style.maxWidth=max+'px';clip.style.alignSelf='center';}
     parent.append(clip);return clip;
   }
+  function navigationArrow(direction) {
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    for(const [name,value] of Object.entries({width:'24',height:'24',viewBox:'0 0 24 24',fill:'none','aria-hidden':'true'}))svg.setAttribute(name,value);
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    for(const [name,value] of Object.entries({d:direction==='left'?'M21 12H3m7-7-7 7 7 7':'M3 12h18m-7-7 7 7-7 7',stroke:'currentColor','stroke-width':'1.5','stroke-linecap':'round','stroke-linejoin':'round'}))path.setAttribute(name,value);
+    svg.append(path);return svg;
+  }
   function header(title,subtitle,discipline,back,heroSrc) {
     const header=make('header','m-header');
-    const link=action(header,back,'← Back to portfolio');link.className='m-back';
+    const link=action(header,back,'Back to portfolio');link.className='m-back';link.prepend(navigationArrow('left'));
     if(heroSrc){const hero=make('div','m-hero');const img=make('img');img.src=heroSrc;img.alt='';hero.append(img,make('h1','',title),make('p','m-subtitle',subtitle));header.append(hero);header.style.paddingBottom='0';}
     else header.append(make('h1','',title),make('p','m-subtitle',subtitle));
     if(discipline)header.append(make('p','m-discipline',discipline));main.append(header);
@@ -121,7 +128,7 @@
   function footer() {
     const original=$('.next-project-footer')||$('.hashomer-next-footer');if(!original)return;
     const el=make('footer','m-next');copy(el,original.querySelector('.next-eyebrow'),'p','m-label');copy(el,original.querySelector('h2'),'h2','');copy(el,original.querySelector('.next-discipline'));
-    action(el,original.querySelector('a'),'Next project →');main.append(el);
+    const next=action(el,original.querySelector('a'),'Next project');next.append(navigationArrow('right'));main.append(el);
   }
   function carup() {
     source=$('.wrap');header(text('h1'),text('.subtitle'),text('.discipline'),$('.back'));
