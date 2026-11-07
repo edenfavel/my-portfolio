@@ -104,3 +104,10 @@
   .mobile-case .mobile-phone{overflow:hidden!important;border-radius:20% / 10%;filter:none;isolation:isolate;-webkit-mask-image:linear-gradient(#fff,#fff)}
   .mobile-case .mobile-phone video{clip-path:inset(0 round 20% / 10%)}
 }
+
+@media(max-width:900px){
+  .mobile-home .projects-scroll .project .project-title,
+  .mobile-home .projects-scroll .project .project-discipline{color:#fff!important}
+  .mobile-about .contact-link>span{display:flex;align-items:center;justify-content:center}
+  .mobile-about .contact-link svg{display:block;width:22px;height:22px}
+}

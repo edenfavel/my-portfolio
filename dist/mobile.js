@@ -37,7 +37,11 @@
   }
   if ($('.about-page')) {
     $('.bio').querySelectorAll('br').forEach(br => br.after(document.createTextNode(' ')));
-    const syncAbout = () => document.body.classList.toggle('mobile-about', media.matches);
+    const contactArrows=Array.from(document.querySelectorAll('.contact-link>span')).map(el=>({el,original:el.innerHTML}));
+    const syncAbout = () => {
+      document.body.classList.toggle('mobile-about', media.matches);
+      contactArrows.forEach(({el,original})=>{el.innerHTML=media.matches?'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>':original;});
+    };
     syncAbout(); media.addEventListener('change', syncAbout);
     return;
   }
@@ -151,7 +155,7 @@
   }
   function urban() {
     source=$('.page-wrap');header(text(node('17052:11088')),text(node('17052:11090')),text(node('17052:11092')),$('.back-portfolio'));
-    let sec=section('LIVE DEMO');art(sec,$('.urban-live-frame'));action(sec,$('.urban-open-full'),'Open full experience ↗','m-live');
+    let sec=section('LIVE DEMO');art(sec,$('.urban-live-frame'));action(sec,$('.urban-open-full'),'Open full experience','m-live');
     section(text(node('17052:10987')),text(node('17052:11096')),[text(node('17052:10993'))]);
     sec=section(text(node('17052:10988')),text(node('17052:10996')),[text(node('17052:10999'))]);
     [['17052:11099','17052:11100','17052:11101'],['17052:11104','17052:11105','17052:11106'],['17052:11108','17052:11109','17052:11110']].forEach(ids=>{const card=make('article','m-step');sec.append(card);copy(card,node(ids[0]),'p','m-label');copy(card,node(ids[1]),'h3','');copy(card,node(ids[2]));});
