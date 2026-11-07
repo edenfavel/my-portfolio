@@ -71,7 +71,7 @@
   }
   // Move existing artwork rather than rasterizing it: SVG, video and event listeners survive.
   // Restore the exact original inline styles and DOM positions when returning to desktop.
-  function art(parent, element, maxWidth) {
+  function art(parent, element, maxWidth, inset={left:0,right:0,top:0,bottom:0}) {
     if(!element) return;
     let elements=Array.isArray(element)?element.filter(Boolean):[element];
     const flatten = el => getComputedStyle(el).display==='contents' ? Array.from(el.children).flatMap(flatten) : [el];
@@ -81,8 +81,8 @@
     const boxes=elements.map(el=>({el,rect:el.getBoundingClientRect(),computed:getComputedStyle(el)}));
     if(boxes.some(x=>!x.rect.width||!x.rect.height)) return;
     const left=Math.min(...boxes.map(x=>x.rect.left)),top=Math.min(...boxes.map(x=>x.rect.top));
-    const width=(Math.max(...boxes.map(x=>x.rect.right))-left)/pageScale;
-    const height=(Math.max(...boxes.map(x=>x.rect.bottom))-top)/pageScale;
+    const width=(Math.max(...boxes.map(x=>x.rect.right))-left)/pageScale+inset.left+inset.right;
+    const height=(Math.max(...boxes.map(x=>x.rect.bottom))-top)/pageScale+inset.top+inset.bottom;
     const figure=make('div','m-art'),stage=make('div','m-art-stage');
     figure.style.setProperty('--art-max',(maxWidth||width)+'px');
     stage.style.width=width+'px';stage.style.height=height+'px';figure.append(stage);parent.append(figure);
@@ -91,15 +91,16 @@
       const style=el.getAttribute('style');
       const matrix=computed.transform==='none'?null:new DOMMatrixReadOnly(computed.transform);
       const transform=matrix?`matrix(${matrix.a},${matrix.b},${matrix.c},${matrix.d},0,0)`:'none';
-      moving.push({el,home,stage,style,x:(rect.left-left)/pageScale,y:(rect.top-top)/pageScale,w:parseFloat(computed.width)||rect.width/pageScale,h:parseFloat(computed.height)||rect.height/pageScale,transform});
+      moving.push({el,home,stage,style,x:(rect.left-left)/pageScale+inset.left,y:(rect.top-top)/pageScale+inset.top,w:parseFloat(computed.width)||rect.width/pageScale,h:parseFloat(computed.height)||rect.height/pageScale,transform});
     }
     const fit=()=>{const scale=Math.min(1,figure.clientWidth/width);figure.style.setProperty('--art-scale',scale);figure.style.height=height*scale+'px';};
     const observer=new ResizeObserver(fit);observer.observe(figure);figures.push(fit);return figure;
   }
   function video(parent, original, alt, max) {
     if(!original) return;
-    const clip=make('video','m-video');clip.src=original.currentSrc||original.querySelector('source')?.getAttribute('src')||original.getAttribute('src');
-    clip.muted=true;clip.loop=true;clip.playsInline=true;clip.controls=true;clip.preload='metadata';clip.setAttribute('aria-label',alt);
+    const clip=make('video','m-video');
+    prepareVideo(clip);clip.controls=false;clip.setAttribute('aria-label',alt);
+    clip.src=original.currentSrc||original.querySelector('source')?.getAttribute('src')||original.getAttribute('src');
     const videoStyle=getComputedStyle(original);
     const ratio=original.videoWidth&&original.videoHeight?original.videoWidth/original.videoHeight:(parseFloat(videoStyle.width)/parseFloat(videoStyle.height)||16/9);
     clip.style.aspectRatio=ratio;
@@ -121,7 +122,7 @@
   function carup() {
     source=$('.wrap');header(text('h1'),text('.subtitle'),text('.discipline'),$('.back'));
     let sec=section('LIVE DEMO');art(sec,$('.splash'),260);action(sec,$('.splash-slot'),'Explore the app ↗','m-live');
-    sec=section('01 / THE PROJECT',text('.section-title'),[text('.body-copy')]);art(sec,$('.mountain-drive'),300);
+    sec=section('01 / THE PROJECT',text('.section-title'),[text('.body-copy')]);art(sec,$('.mountain-drive'),340,{left:72,right:72,top:64,bottom:12});
     $('.project-details').querySelectorAll('article').forEach(el=>section(text(el.querySelector('.label')),'',[text(el.querySelector('.body-copy'))]));
     sec=section(text('.home-screen .label'),text('.home-screen h2'),[text('.home-screen .body-copy')]);art(sec,$('.home-phone-shadow'),270);
     sec=section(text('#smart-reminders .label'),text('#smart-reminders h2'),[text('#smart-reminders .body-copy')]);art(sec,$('.notification-slot'));
@@ -179,22 +180,41 @@
     source.querySelectorAll('video').forEach(clip=>{if(media.matches)clip.pause();});
     if(media.matches&&location.hash==='#project-top')scrollTo(0,0);
   }
-  // Native playback controls, inline video, and reduced-motion support on phones.
+  // Observe the visible phone frame, not the oversized video cropped inside it.
   const motion=matchMedia('(prefers-reduced-motion:reduce)');
+  const videoStates=new Map();
+  function prepareVideo(v){
+    v.muted=true;v.defaultMuted=true;v.loop=true;v.playsInline=true;v.autoplay=!motion.matches;v.preload='auto';
+    ['muted','loop','playsinline'].forEach(name=>v.setAttribute(name,''));
+    v.toggleAttribute('autoplay',!motion.matches);
+  }
+  function resumeVideo(v){
+    const state=videoStates.get(v);
+    if(media.matches&&state?.visible&&!document.hidden&&!motion.matches&&!v.dataset.mobileUserPaused)v.play().catch(()=>{});
+  }
   const videoObserver=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>{
-    const desktopVideo=!media.matches&&!target.closest('.mobile-case')&&target.autoplay;
-    if(isIntersecting&&!motion.matches&&!target.dataset.mobileUserPaused&&(media.matches||desktopVideo))target.play().catch(()=>{});else target.pause();
-  }),{threshold:.25});
-  const observedVideos=new WeakSet();
+    for(const [v,state] of videoStates){if(state.frame!==target)continue;state.visible=isIntersecting;
+      if(!media.matches)continue;
+      if(isIntersecting)resumeVideo(v);else v.pause();
+    }
+  }),{threshold:0.01});
   function observeVideos(){if(main)main.querySelectorAll('video').forEach(v=>{
-    if(observedVideos.has(v))return;observedVideos.add(v);videoObserver.observe(v);
+    if(videoStates.has(v))return;
+    prepareVideo(v);
+    const frame=v.closest('.m-art')||v;
+    videoStates.set(v,{frame,visible:false});videoObserver.observe(frame);
+    ['loadeddata','canplay'].forEach(event=>v.addEventListener(event,()=>resumeVideo(v)));
     if(!v.controls){
-      const button=make('button','m-action m-pause','Pause animation');button.type='button';button.setAttribute('aria-pressed','false');
+      const button=make('button','m-action m-pause','Pause animation');button.type='button';
       const update=()=>{button.textContent=v.paused?'Play animation':'Pause animation';button.setAttribute('aria-pressed',String(v.paused));};
       button.addEventListener('click',()=>{if(v.paused){delete v.dataset.mobileUserPaused;v.play().catch(()=>{});}else{v.dataset.mobileUserPaused='true';v.pause();}});
-      v.addEventListener('play',update);v.addEventListener('pause',update);v.closest('.m-art').after(button);update();
+      v.addEventListener('play',update);v.addEventListener('pause',update);frame.after(button);update();
     }
   });}
+  const resumeVisible=()=>videoStates.forEach((state,v)=>resumeVideo(v));
+  document.addEventListener('visibilitychange',resumeVisible);
+  document.addEventListener('pointerdown',resumeVisible,{passive:true});
+  motion.addEventListener('change',()=>videoStates.forEach((state,v)=>{v.autoplay=!motion.matches;if(motion.matches)v.pause();else resumeVideo(v);}));
   const start=()=>{sync();observeVideos();};
   if(document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(start);else start();
   media.addEventListener('change',start);
