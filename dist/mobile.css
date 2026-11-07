@@ -95,3 +95,12 @@
 }
 @media(max-width:360px){.mobile-home .project-caption{font-size:13px}.mobile-home .project-discipline{font-size:11px}.mobile-case .m-header,.mobile-case .m-section{padding-left:16px;padding-right:16px}}
 @media(min-width:601px) and (max-width:900px){.mobile-home .page{padding:32px;max-width:760px;margin:auto}.mobile-home .projects-scroll{gap:38px}.mobile-case .m-section,.mobile-case .m-header{padding-left:40px;padding-right:40px}.mobile-case .m-cards{grid-template-columns:1fr 1fr}}
+
+@media(max-width:900px){
+  /* Bleed opening photography to the screen edges while retaining text gutters. */
+  .mobile-case .m-header:has(.m-hero){padding-left:0;padding-right:0}
+  .mobile-case .m-header:has(.m-hero)>.m-back{margin-right:20px}
+  /* Clip the video background at the phone silhouette, including Safari compositing. */
+  .mobile-case .mobile-phone{overflow:hidden!important;border-radius:20% / 10%;filter:none;isolation:isolate;-webkit-mask-image:linear-gradient(#fff,#fff)}
+  .mobile-case .mobile-phone video{clip-path:inset(0 round 20% / 10%)}
+}

@@ -84,7 +84,7 @@
     const width=(Math.max(...boxes.map(x=>x.rect.right))-left)/pageScale+inset.left+inset.right;
     const height=(Math.max(...boxes.map(x=>x.rect.bottom))-top)/pageScale+inset.top+inset.bottom;
     const figure=make('div','m-art'),stage=make('div','m-art-stage');
-    figure.style.setProperty('--art-max',(maxWidth||width)+'px');
+    figure.style.setProperty('--art-max',Math.min(maxWidth||width,width)+'px');
     stage.style.width=width+'px';stage.style.height=height+'px';figure.append(stage);parent.append(figure);
     for(const {el,rect,computed} of boxes){
       const home=document.createComment('mobile artwork home');el.before(home);
@@ -121,7 +121,7 @@
   }
   function carup() {
     source=$('.wrap');header(text('h1'),text('.subtitle'),text('.discipline'),$('.back'));
-    let sec=section('LIVE DEMO');art(sec,$('.splash'),260);action(sec,$('.splash-slot'),'Explore the app ↗','m-live');
+    let sec=section('LIVE DEMO');art(sec,$('.splash'),260);action(sec,$('.splash-slot'),'Explore the app','m-live');
     sec=section('01 / THE PROJECT',text('.section-title'),[text('.body-copy')]);art(sec,$('.mountain-drive'),340,{left:72,right:72,top:64,bottom:12});
     $('.project-details').querySelectorAll('article').forEach(el=>section(text(el.querySelector('.label')),'',[text(el.querySelector('.body-copy'))]));
     sec=section(text('.home-screen .label'),text('.home-screen h2'),[text('.home-screen .body-copy')]);art(sec,$('.home-phone-shadow'),270);
@@ -137,7 +137,7 @@
     sec=section(text('.challenge-label'),text('#challenge-title'),[text('.challenge-copy')]);
     const before=make('div','');before.append(make('p','m-label','BEFORE'));art(before,$('.comparison-before'));sec.append(before);
     const after=make('div','');after.append(make('p','m-label','AFTER'));art(after,$('.after-crop'));sec.append(after);
-    sec=section(text('.explore-label'),text('#explore-title'),[text('.explore-copy')]);action(sec,$('.explore-full'),'Explore full website ↗','m-live');art(sec,$('.live-screen'));
+    sec=section(text('.explore-label'),text('#explore-title'),[text('.explore-copy')]);action(sec,$('.explore-full'),'Explore full website','m-live');art(sec,$('.live-screen'));
     sec=section(text('.mobile-label'),text('#mobile-title'),[text('.mobile-copy')]);art(sec,$('.mobile-phone'),290);
   }
   function hamarcolet() {
