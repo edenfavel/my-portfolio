@@ -148,7 +148,11 @@
     sec=section(text('.challenge-label'),text('#challenge-title'),[text('.challenge-copy')]);
     const before=make('div','');before.append(make('p','m-label','BEFORE'));art(before,$('.comparison-before'));sec.append(before);
     const after=make('div','');after.append(make('p','m-label','AFTER'));art(after,$('.after-crop'));sec.append(after);
-    sec=section(text('.explore-label'),text('#explore-title'),[text('.explore-copy')]);action(sec,$('.explore-full'),'Explore full website','m-live');art(sec,$('.live-screen'));
+    sec=section(text('.explore-label'),text('#explore-title'),[text('.explore-copy')]);action(sec,$('.explore-full'),'Explore full website','m-live');
+    // A native image scroller avoids blank transformed/lazy iframes on iOS.
+    const preview=make('div','m-hashomer-preview');preview.tabIndex=0;preview.setAttribute('role','region');preview.setAttribute('aria-label','Scroll to preview the HaShomer HaChadash homepage');
+    const homepage=image(preview,'assets/hashomer-site/0b93ce3353b487d7ee1f.png','HaShomer HaChadash redesigned homepage');homepage.loading='eager';
+    sec.append(preview);
     sec=section(text('.mobile-label'),text('#mobile-title'),[text('.mobile-copy')]);art(sec,$('.mobile-phone'),290);
   }
   function hamarcolet() {

@@ -121,3 +121,9 @@
  .mobile-case .m-hamarcolet-social{clip-path:inset(0 round 14.25% / 6.58%)}
  .m-hamarcolet-social .m-art-stage>[data-node-id]{box-shadow:none!important}
 }
+
+@media(max-width:900px){
+ .mobile-case .m-hashomer-preview{width:100%;aspect-ratio:813.444/467.793;overflow-y:auto;overflow-x:hidden;border:1px solid #dcff51;border-radius:10px;background:#003322;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y}
+ .mobile-case .m-hashomer-preview>.m-image{display:block;width:100%;max-width:none;height:auto;margin:0;object-fit:initial}
+ .mobile-case .m-hashomer-preview:focus-visible{outline:2px solid #0071fc;outline-offset:4px}
+}
