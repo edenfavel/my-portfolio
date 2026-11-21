@@ -28,8 +28,15 @@
   const viewport=document.querySelector('.live-viewport');
   const iframe=viewport.querySelector('iframe');
   iframe.addEventListener('load', settleEntry);
+  const desktop=matchMedia('(min-width:901px)');
+  function syncDemo(){
+    if(desktop.matches){if(!iframe.getAttribute('src'))iframe.src=iframe.dataset.desktopSrc;}
+    else if(iframe.hasAttribute('src'))iframe.removeAttribute('src');
+  }
+  desktop.addEventListener('change',syncDemo);syncDemo();
   function fit(){
     root.style.setProperty('--page-scale',root.clientWidth/1440);
+    if(!screen.clientWidth||!screen.clientHeight)return;
     const scale=screen.clientWidth/1440;
     viewport.style.setProperty('--embed-scale',scale);
     viewport.style.height=screen.clientHeight/scale+'px';
