@@ -154,10 +154,10 @@
   function hamarcolet() {
     source=$('.page-wrap');header(text(node('16972:9560')),text(node('16972:9562')),'',$('.back.nav'),node('16972:9530').querySelector('img').getAttribute('src'));
     let sec=section('01 / THE PROJECT','',[text(node('16972:9561'))]);art(sec,node('16972:9563'));
-    sec=section('','Logo');art(sec,node('16972:9564'));art(sec,$('#animated-pattern'));
-    sec=section('','Color Palette');Array.from(node('16972:9680').children).forEach(swatch=>art(sec,swatch,220));
+    sec=section('','Logo');art(sec,node('16972:9564'));art(sec,$('#animated-pattern'))?.classList.add('m-hamarcolet-pattern');
+    sec=section('','Color Palette');Array.from(node('16972:9680').children).forEach(swatch=>art(sec,swatch,220,{left:0,right:0,top:0,bottom:18})?.classList.add('m-hamarcolet-swatch'));
     sec=section('','Mobile Landing Page');art(sec,$('.mobile-video'),290);
-    sec=section('','Social Media');['16972:9602','16972:9636','16972:9658'].forEach(id=>art(sec,node(id),440));
+    sec=section('','Social Media');['16972:9602','16972:9636','16972:9658'].forEach(id=>art(sec,node(id),440)?.classList.add('m-hamarcolet-social'));
     sec=section('','Mockups');['16972:9548','16972:9547','16972:9549'].forEach(id=>art(sec,node(id),600));
   }
   function urban() {

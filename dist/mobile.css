@@ -58,7 +58,7 @@
   body.mobile-home,html:has(body.mobile-home){height:auto!important;overflow-y:auto!important;overflow-x:clip!important}
   .mobile-home .page{position:relative;width:100%;height:auto;min-height:100svh;overflow:visible;padding:28px 20px 40px;display:grid;grid-template-columns:1fr 1fr;gap:0 16px;align-content:start}
   .mobile-home .name-text{position:static;grid-column:1/-1;font-size:17px;line-height:1.4;margin:0 0 36px}
-  .mobile-home img[alt="Portfolio"]{position:static!important;grid-column:1/-1;width:100%!important;height:auto;max-width:600px;top:auto!important;left:auto!important;margin:0 0 26px}
+  .mobile-home img[alt="Eden Favel"]{position:static!important;grid-column:1/-1;width:100%!important;height:auto;max-width:600px;top:auto!important;left:auto!important;margin:0 0 26px}
   .mobile-home .intro{position:static;grid-column:1/-1;left:auto;top:auto;width:100%;max-width:600px;margin:0 0 24px;font-size:16px;line-height:1.4}
   .mobile-home .intro br{display:none}
   .mobile-home .about-text,.mobile-home .contact-text{position:static;display:flex;align-items:center;min-height:44px;font-size:16px;margin-bottom:30px}
@@ -113,3 +113,11 @@
 }
 
 @media(max-width:900px){.mobile-case .m-action svg,.mobile-case .m-back svg{display:block;width:24px;height:24px;flex:none}}
+
+/* Hamarcolet mobile refinements: full-width pattern, spaced labels, clean phone silhouettes. */
+@media(max-width:900px){
+ .mobile-case[data-project="hamarcolet"] .m-hamarcolet-pattern{width:calc(100% + 40px);max-width:none;margin-left:-20px;margin-right:-20px}
+ .m-hamarcolet-swatch [data-node-id="16972:9690"],.m-hamarcolet-swatch [data-node-id="16972:9702"],.m-hamarcolet-swatch [data-node-id="16972:9714"]{transform:translateY(16px)}
+ .mobile-case .m-hamarcolet-social{clip-path:inset(0 round 14.25% / 6.58%)}
+ .m-hamarcolet-social .m-art-stage>[data-node-id]{box-shadow:none!important}
+}
